@@ -58,25 +58,26 @@ export const WayfinderAppBar = React.forwardRef<HTMLDivElement, WayfinderAppBarP
         position="static"
         elevation={0}
         sx={{
-          background: 'linear-gradient(135deg, #0F3A41 0%, #146D6E 50%, #0F3A41 100%)',
+          position: 'relative',
+          bgcolor: 'primary.dark',
           height: 64,
           zIndex: (theme) => theme.zIndex.drawer + 1,
-          // Subtle topographic pattern via repeating radial gradient
+          overflow: 'hidden',
+          // Overlay image: fill width, keep aspect ratio, 20% opacity
           '&::before': {
             content: '""',
             position: 'absolute',
             inset: 0,
-            opacity: 0.08,
-            backgroundImage: `
-              repeating-radial-gradient(circle at 20% 50%, transparent 0, transparent 40px, rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 42px),
-              repeating-radial-gradient(circle at 80% 30%, transparent 0, transparent 60px, rgba(255,255,255,0.04) 60px, rgba(255,255,255,0.04) 62px),
-              repeating-radial-gradient(circle at 50% 80%, transparent 0, transparent 80px, rgba(255,255,255,0.03) 80px, rgba(255,255,255,0.03) 82px)
-            `,
+            backgroundImage: 'url(/appbar-bg.png)',
+            backgroundSize: '100% auto',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            opacity: 0.2,
             pointerEvents: 'none',
           },
         }}
       >
-        <Toolbar sx={{ minHeight: 64, px: 2 }}>
+        <Toolbar sx={{ position: 'relative', zIndex: 1, minHeight: 64, px: 2 }}>
           <IconButton
             edge="start"
             color="inherit"

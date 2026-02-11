@@ -122,6 +122,12 @@ export const Default: Story = {
           },
         ],
         aiCheckRun: true,
+        inlinePrompts: [
+          { label: 'Summarise jurisdiction' },
+          { label: 'List applicable states' },
+        ],
+        onAskAI: fn(),
+        onInlinePromptClick: fn(),
       },
       {
         questionTitle: 'Question',

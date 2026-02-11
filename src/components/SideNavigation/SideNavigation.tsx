@@ -114,20 +114,12 @@ export const SideNavigation = React.forwardRef<HTMLDivElement, SideNavigationPro
                   },
                 }}
               >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 40,
-                    color: isActive ? 'primary.main' : 'action.active',
-                  }}
-                >
-                  {item.icon}
-                </ListItemIcon>
+                <ListItemIcon sx={{ minWidth: 40 }}>{item.icon}</ListItemIcon>
                 <ListItemText
                   primary={item.label}
                   primaryTypographyProps={{
                     variant: 'body2',
                     fontWeight: isActive ? 600 : 400,
-                    color: isActive ? 'primary.main' : 'text.primary',
                     noWrap: true,
                   }}
                 />

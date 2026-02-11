@@ -1,4 +1,5 @@
 import React from 'react';
+import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
@@ -209,7 +210,7 @@ export const AIChat = React.forwardRef<HTMLDivElement, AIChatProps>(
           {/* Spacer pushes inline prompts to the bottom in empty state */}
           {messages.length === 0 && <Box sx={{ flex: 1 }} />}
 
-          {/* Inline prompts — pinned to bottom when empty, after messages otherwise */}
+          {/* Inline prompts — same style as AnswerCard (rounded, secondary selected fill) */}
           {inlinePrompts.length > 0 && (
             <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
               {inlinePrompts.map((prompt, i) => (
@@ -217,7 +218,7 @@ export const AIChat = React.forwardRef<HTMLDivElement, AIChatProps>(
                   key={i}
                   label={prompt.label}
                   size="small"
-                  variant="outlined"
+                  variant="filled"
                   clickable
                   onClick={() => onInlinePromptClick?.(i)}
                   sx={{
@@ -226,8 +227,13 @@ export const AIChat = React.forwardRef<HTMLDivElement, AIChatProps>(
                     lineHeight: '18px',
                     letterSpacing: '0.16px',
                     height: 28,
-                    borderColor: 'secondary.main',
+                    borderRadius: 9999,
+                    bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.08),
                     color: 'secondary.main',
+                    '&:hover': {
+                      bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.12),
+                      color: 'secondary.main',
+                    },
                   }}
                 />
               ))}

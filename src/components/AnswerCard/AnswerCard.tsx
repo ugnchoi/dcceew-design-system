@@ -114,24 +114,24 @@ export const AnswerCard = React.forwardRef<HTMLDivElement, AnswerCardProps>(
           overflow: 'hidden',
         }}
       >
-        {/* Question header — primary/_states/hover */}
+        {/* Question header — primary/_states/hover (padding extends bg to divider) */}
         <CardContent
           sx={{
             bgcolor: (theme) => alpha(theme.palette.primary.main, 0.04),
-            pb: 0,
             pt: 4,
             px: 4,
+            pb: 2.5,
           }}
         >
           <Typography
             variant="h6"
             component="h3"
-            sx={{ fontWeight: 500, mb: 1 }}
+            sx={{ fontWeight: 500, mb: description ? 1 : 0 }}
           >
             {questionTitle}
           </Typography>
           {description && (
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 2.5 }}>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 0 }}>
               {description}
             </Typography>
           )}
