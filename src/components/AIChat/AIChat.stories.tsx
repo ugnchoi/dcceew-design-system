@@ -115,6 +115,21 @@ export const WithInput: Story = {
   },
 };
 
+/** Long input text to demonstrate textarea auto-growth in the input bar. */
+export const WithLongInput: Story = {
+  args: {
+    messages: [],
+    inlinePrompts: [
+      { label: 'inline prompt' },
+      { label: 'inline prompt' },
+      { label: 'inline prompt' },
+    ],
+    sourceFiles: [],
+    inputValue:
+      'Can you summarise the biodiversity impacts for this project, including likely effects on threatened species, habitat fragmentation risk, and the key mitigation actions we should include in the response to regulators?',
+  },
+};
+
 /** Multiple exchange conversation. */
 export const MultiTurn: Story = {
   args: {

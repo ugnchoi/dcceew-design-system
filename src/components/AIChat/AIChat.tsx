@@ -107,11 +107,22 @@ export const AIChat = React.forwardRef<HTMLDivElement, AIChatProps>(
     },
     ref,
   ) {
+    const [internalInput, setInternalInput] = React.useState(inputValue);
+
+    React.useEffect(() => {
+      setInternalInput(inputValue);
+    }, [inputValue]);
+
     const handleKeyDown = (e: React.KeyboardEvent) => {
       if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
         onSend?.();
       }
+    };
+
+    const handleInputChange = (value: string) => {
+      setInternalInput(value);
+      onInputChange?.(value);
     };
 
     return (
@@ -287,7 +298,7 @@ export const AIChat = React.forwardRef<HTMLDivElement, AIChatProps>(
         <Box
           sx={{
             display: 'flex',
-            alignItems: 'center',
+            alignItems: 'flex-end',
             gap: 1,
             px: 2,
             py: 1.5,
@@ -307,10 +318,13 @@ export const AIChat = React.forwardRef<HTMLDivElement, AIChatProps>(
 
           <TextField
             fullWidth
+            multiline
+            minRows={1}
+            maxRows={6}
             variant="standard"
             placeholder={inputPlaceholder}
-            value={inputValue}
-            onChange={(e) => onInputChange?.(e.target.value)}
+            value={internalInput}
+            onChange={(e) => handleInputChange(e.target.value)}
             onKeyDown={handleKeyDown}
             slotProps={{
               input: {
@@ -319,6 +333,7 @@ export const AIChat = React.forwardRef<HTMLDivElement, AIChatProps>(
                   fontSize: '1rem',
                   lineHeight: '24px',
                   letterSpacing: '0.15px',
+                  py: 0.5,
                 },
               },
             }}
@@ -328,7 +343,7 @@ export const AIChat = React.forwardRef<HTMLDivElement, AIChatProps>(
             size="small"
             onClick={onSend}
             aria-label="Send message"
-            disabled={!inputValue.trim()}
+            disabled={!internalInput.trim()}
             sx={{
               color: 'secondary.main',
               '&.Mui-disabled': {
