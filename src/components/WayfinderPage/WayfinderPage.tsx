@@ -6,7 +6,7 @@ import Grow from '@mui/material/Grow';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { WayfinderAppBar } from '../WayfinderAppBar';
-import { SideNavigation, SIDEBAR_TRANSITION_DURATION, type NavItem } from '../SideNavigation';
+import { SideNavigation, type NavItem } from '../SideNavigation';
 import { LocalNavigation, type StepItem } from '../LocalNavigation';
 import { AnswerCard, type AnswerCardProps } from '../AnswerCard';
 import { AIGuidance, type AIGuidanceProps } from '../AIGuidance';
