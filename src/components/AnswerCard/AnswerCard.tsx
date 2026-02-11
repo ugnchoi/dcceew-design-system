@@ -118,19 +118,19 @@ export const AnswerCard = React.forwardRef<HTMLDivElement, AnswerCardProps>(
           sx={{
             bgcolor: 'rgba(0, 0, 0, 0.01)',
             pb: 0,
-            pt: 3,
-            px: 3,
+            pt: 4,
+            px: 4,
           }}
         >
           <Typography
             variant="h6"
             component="h3"
-            sx={{ fontWeight: 500, mb: 0.5 }}
+            sx={{ fontWeight: 500, mb: 1 }}
           >
             {questionTitle}
           </Typography>
           {description && (
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2.5 }}>
               {description}
             </Typography>
           )}
@@ -140,7 +140,7 @@ export const AnswerCard = React.forwardRef<HTMLDivElement, AnswerCardProps>(
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }} />
 
         {/* Answer area */}
-        <CardContent sx={{ px: 3, pt: 3, pb: 2 }}>
+        <CardContent sx={{ px: 4, pt: 4, pb: 3 }}>
           <TextField
             fullWidth
             multiline
@@ -150,7 +150,7 @@ export const AnswerCard = React.forwardRef<HTMLDivElement, AnswerCardProps>(
             placeholder={answerPlaceholder}
             variant="outlined"
             sx={{
-              mb: 2,
+              mb: 3,
               '& .MuiOutlinedInput-root': {
                 bgcolor: 'background.paper',
                 fontSize: '1rem',
@@ -169,7 +169,7 @@ export const AnswerCard = React.forwardRef<HTMLDivElement, AnswerCardProps>(
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 1.5,
+                gap: 2,
                 flexWrap: 'wrap',
               }}
             >
@@ -233,19 +233,19 @@ export const AnswerCard = React.forwardRef<HTMLDivElement, AnswerCardProps>(
             bgcolor: aiCheckRun ? 'rgba(63, 81, 181, 0.04)' : 'rgba(63, 81, 181, 0.02)',
             borderTop: 1,
             borderColor: 'divider',
-            px: 3,
-            py: 2,
+            px: 4,
+            py: 3,
             display: 'flex',
             alignItems: 'flex-start',
             justifyContent: 'space-between',
-            gap: 2,
+            gap: 3,
           }}
         >
           <Box
             sx={{
               display: 'flex',
               alignItems: 'flex-start',
-              gap: 1.5,
+              gap: 2,
               flex: 1,
             }}
           >
@@ -268,7 +268,7 @@ export const AnswerCard = React.forwardRef<HTMLDivElement, AnswerCardProps>(
                         content: '"•  "',
                       },
                       mb:
-                        index < aiSuggestions.length - 1 ? 0.5 : 0,
+                        index < aiSuggestions.length - 1 ? 1 : 0,
                     }}
                   >
                     {suggestion.text}
@@ -308,22 +308,22 @@ export const AnswerCard = React.forwardRef<HTMLDivElement, AnswerCardProps>(
         {hasInlinePrompts && (
           <Box
             sx={{
-              bgcolor: 'rgba(63, 81, 181, 0.01)',
+              bgcolor: 'rgba(63, 81, 181, 0.02)',
               borderTop: 1,
               borderColor: 'divider',
-              px: 3,
-              py: 1.5,
+              px: 4,
+              py: 2.5,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              gap: 2,
+              gap: 3,
             }}
           >
             <Box
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 1,
+                gap: 1.5,
                 flexWrap: 'wrap',
               }}
             >
@@ -332,17 +332,21 @@ export const AnswerCard = React.forwardRef<HTMLDivElement, AnswerCardProps>(
                   key={index}
                   label={prompt.label}
                   size="small"
-                  variant="outlined"
+                  variant="filled"
                   clickable
                   onClick={() => onInlinePromptClick?.(index)}
                   sx={{
                     fontSize: '0.8125rem',
-                    fontWeight: 400,
+                    fontWeight: 500,
                     lineHeight: '18px',
                     letterSpacing: '0.16px',
-                    height: 28,
-                    borderColor: 'secondary.main',
-                    color: 'secondary.main',
+                    height: 32,
+                    bgcolor: 'secondary.main',
+                    color: 'secondary.contrastText',
+                    '&:hover': {
+                      bgcolor: 'secondary.dark',
+                      color: 'secondary.contrastText',
+                    },
                   }}
                 />
               ))}
