@@ -1,4 +1,5 @@
 import React from 'react';
+import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -113,10 +114,10 @@ export const AnswerCard = React.forwardRef<HTMLDivElement, AnswerCardProps>(
           overflow: 'hidden',
         }}
       >
-        {/* Question header — subtle tinted background */}
+        {/* Question header — primary/_states/hover */}
         <CardContent
           sx={{
-            bgcolor: 'rgba(0, 0, 0, 0.01)',
+            bgcolor: (theme) => alpha(theme.palette.primary.main, 0.04),
             pb: 0,
             pt: 4,
             px: 4,
