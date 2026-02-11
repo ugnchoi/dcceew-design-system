@@ -196,7 +196,14 @@ export const WayfinderPage: React.FC<WayfinderPageProps> = ({
                 }}
               >
                 {answerCards.map((cardProps, index) => (
-                  <AnswerCard key={index} {...cardProps} />
+                  <AnswerCard
+                    key={index}
+                    {...cardProps}
+                    onAskAI={() => {
+                      handleChatOpen();
+                      cardProps.onAskAI?.();
+                    }}
+                  />
                 ))}
 
                 {/* Section navigation buttons */}
