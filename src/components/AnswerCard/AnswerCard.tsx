@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import LinkIcon from '@mui/icons-material/Link';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
-import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
+import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlined';
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 
 export interface SourceItem {
@@ -249,7 +249,7 @@ export const AnswerCard = React.forwardRef<HTMLDivElement, AnswerCardProps>(
               flex: 1,
             }}
           >
-            <AutoAwesomeOutlinedIcon
+            <TipsAndUpdatesOutlinedIcon
               sx={{
                 color: 'secondary.main',
                 fontSize: 24,

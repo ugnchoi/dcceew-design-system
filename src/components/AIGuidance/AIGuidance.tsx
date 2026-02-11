@@ -10,7 +10,7 @@ import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
+import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlined';
 
 export interface GuidanceListItem {
   /** Unique identifier */
@@ -194,7 +194,7 @@ export const AIGuidance = React.forwardRef<HTMLDivElement, AIGuidanceProps>(
           tabIndex={0}
           aria-label={nextBestStep}
         >
-          <AutoAwesomeOutlinedIcon
+          <TipsAndUpdatesOutlinedIcon
             sx={{
               color: 'secondary.main',
               fontSize: 22,
