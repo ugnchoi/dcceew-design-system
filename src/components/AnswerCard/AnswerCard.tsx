@@ -338,15 +338,16 @@ export const AnswerCard = React.forwardRef<HTMLDivElement, AnswerCardProps>(
                   onClick={() => onInlinePromptClick?.(index)}
                   sx={{
                     fontSize: '0.8125rem',
-                    fontWeight: 500,
+                    fontWeight: 400,
                     lineHeight: '18px',
                     letterSpacing: '0.16px',
-                    height: 32,
-                    bgcolor: 'secondary.main',
-                    color: 'secondary.contrastText',
+                    height: 28,
+                    borderRadius: 9999,
+                    bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.08),
+                    color: 'secondary.main',
                     '&:hover': {
-                      bgcolor: 'secondary.dark',
-                      color: 'secondary.contrastText',
+                      bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.12),
+                      color: 'secondary.main',
                     },
                   }}
                 />
