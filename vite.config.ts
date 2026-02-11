@@ -12,21 +12,17 @@ const dirname =
     ? __dirname
     : path.dirname(fileURLToPath(import.meta.url));
 
-// Skip dts plugin during Storybook builds — it doesn't need declarations
-const isStorybook = process.env.STORYBOOK === 'true';
-
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    !isStorybook &&
-      dts({
-        tsconfigPath: './tsconfig.app.json',
-        include: ['src'],
-        exclude: ['src/**/*.test.*', 'src/**/*.stories.*'],
-        rollupTypes: true,
-        insertTypesEntry: true,
-      }),
+    dts({
+      tsconfigPath: './tsconfig.app.json',
+      include: ['src'],
+      exclude: ['src/**/*.test.*', 'src/**/*.stories.*'],
+      rollupTypes: true,
+      insertTypesEntry: true,
+    }),
   ],
 
   // ── Library mode build ──────────────────────────────────────────────────
