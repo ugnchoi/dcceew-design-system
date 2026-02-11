@@ -89,6 +89,17 @@ export const AnswerCard = React.forwardRef<HTMLDivElement, AnswerCardProps>(
     },
     ref,
   ) {
+    const [internalAnswer, setInternalAnswer] = React.useState(answer);
+
+    React.useEffect(() => {
+      setInternalAnswer(answer);
+    }, [answer]);
+
+    const handleAnswerChange = (value: string) => {
+      setInternalAnswer(value);
+      onAnswerChange?.(value);
+    };
+
     const hasInlinePrompts = inlinePrompts.length > 0 || onAskAI;
 
     return (
@@ -134,8 +145,8 @@ export const AnswerCard = React.forwardRef<HTMLDivElement, AnswerCardProps>(
             fullWidth
             multiline
             rows={rows}
-            value={answer}
-            onChange={(e) => onAnswerChange?.(e.target.value)}
+            value={internalAnswer}
+            onChange={(e) => handleAnswerChange(e.target.value)}
             placeholder={answerPlaceholder}
             variant="outlined"
             sx={{
