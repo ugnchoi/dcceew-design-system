@@ -5,7 +5,7 @@ import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+import InputBase from '@mui/material/InputBase';
 import Chip from '@mui/material/Chip';
 import Divider from '@mui/material/Divider';
 import CloseIcon from '@mui/icons-material/Close';
@@ -303,62 +303,83 @@ export const AIChat = React.forwardRef<HTMLDivElement, AIChatProps>(
         {/* ── Input bar ───────────────────────────────────────────────── */}
         <Box
           sx={{
-            display: 'flex',
-            alignItems: 'flex-end',
-            gap: 1,
             px: 2,
-            py: 1.5,
+            py: 2,
             borderTop: 1,
             borderColor: 'divider',
             flexShrink: 0,
           }}
         >
-          <IconButton
-            size="small"
-            onClick={onAttach}
-            aria-label="Attach file"
-            sx={{ color: 'action.active' }}
-          >
-            <AddIcon />
-          </IconButton>
-
-          <TextField
-            fullWidth
-            multiline
-            minRows={1}
-            maxRows={6}
-            variant="standard"
-            placeholder={inputPlaceholder}
-            value={internalInput}
-            onChange={(e) => handleInputChange(e.target.value)}
-            onKeyDown={handleKeyDown}
-            slotProps={{
-              input: {
-                disableUnderline: true,
-                sx: {
-                  fontSize: '1rem',
-                  lineHeight: '24px',
-                  letterSpacing: '0.15px',
-                  py: 0.5,
-                },
-              },
-            }}
-          />
-
-          <IconButton
-            size="small"
-            onClick={onSend}
-            aria-label="Send message"
-            disabled={!internalInput.trim()}
+          <Box
             sx={{
-              color: 'secondary.main',
-              '&.Mui-disabled': {
-                color: 'action.disabled',
-              },
+              border: 1,
+              borderColor: 'rgba(0, 0, 0, 0.23)',
+              borderRadius: 1,
+              px: '14px',
             }}
           >
-            <SendIcon />
-          </IconButton>
+            <Box sx={{ py: 1, display: 'flex', flexDirection: 'column' }}>
+              <Box sx={{ py: 1 }}>
+                <InputBase
+                  fullWidth
+                  multiline
+                  minRows={1}
+                  maxRows={6}
+                  placeholder={inputPlaceholder}
+                  value={internalInput}
+                  onChange={(e) => handleInputChange(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  sx={{
+                    fontSize: '1rem',
+                    lineHeight: '24px',
+                    letterSpacing: '0.15px',
+                    color: 'text.primary',
+                    alignItems: 'flex-start',
+                    '& .MuiInputBase-input::placeholder': {
+                      color: 'text.secondary',
+                      opacity: 1,
+                    },
+                    '& .MuiInputBase-inputMultiline': {
+                      p: 0,
+                    },
+                  }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <Box sx={{ pr: 1 }}>
+                  <IconButton
+                    size="small"
+                    onClick={onAttach}
+                    aria-label="Attach file"
+                    sx={{ color: 'secondary.main', p: 1 }}
+                  >
+                    <AddIcon />
+                  </IconButton>
+                </Box>
+                <IconButton
+                  size="small"
+                  onClick={onSend}
+                  aria-label="Send message"
+                  disabled={!internalInput.trim()}
+                  sx={{
+                    color: 'secondary.main',
+                    p: '5px',
+                    '&.Mui-disabled': {
+                      color: 'action.disabled',
+                    },
+                  }}
+                >
+                  <SendIcon />
+                </IconButton>
+              </Box>
+            </Box>
+          </Box>
         </Box>
       </Card>
     );
@@ -419,13 +440,14 @@ function AssistantMessage({
               justifyContent: 'space-between',
               px: 2,
               py: 1,
+              bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.12),
               borderBottom: 1,
               borderColor: 'divider',
             }}
           >
             <Typography
-              variant="body2"
-              sx={{ color: 'secondary.main', fontWeight: 600 }}
+              variant="body1"
+              sx={{ color: 'text.primary', fontWeight: 400 }}
             >
               {answerCard.questionLabel}
             </Typography>
